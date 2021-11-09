@@ -1,0 +1,140 @@
+version: "3.9"
+services:
+  caddy:
+    build:
+      context: ./development/containers/caddy
+    ports:
+      - 8000:80
+      - 8001:81
+  tunnel:
+    image: cloudflare/cloudflared:2021.9.0
+    command: tunnel --url http://caddy:81/
+  backend: &backend
+    build:
+      context: ./backend/core
+      target: dev
+    volumes:
+      - ./backend/core/config:/app/config
+      - ./backend/core/guides:/app/guides
+      - ./backend/core/offers:/app/offers
+      - ./backend/core/users:/app/users
+      - ./backend/core/partners:/app/partners
+      - ./backend/core/phones:/app/phones
+      - ./backend/core/address:/app/address
+      - ./backend/core/.devcontainer:/app/.devcontainer
+      - ./backend/core/debug:/app/debug
+      - ./backend/core/tests:/app/tests
+      - ./backend/core/requirements.txt:/app/requirements.txt
+      - ./backend/core/requirements_dev.txt:/app/requirements_dev.txt
+      - ./clients/v1-schema.yaml:/app/v1-schema.yaml:delegated
+    command: bash -c 'MYSQL_PWD=password wait-until "mysql core -u upwardlicore -e \"select 1\"" && ./manage.py runserver 0.0.0.0:8080'
+    ports:
+      - 8080:8080
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: core
+      MYSQL_USER: upwardlicore
+      MYSQL_PASSWORD: password
+      DEBUG: 1
+      REACT_NATIVE_PACKAGER_HOSTNAME: ${REACT_NATIVE_PACKAGER_HOSTNAME}
+    depends_on:
+      - db
+  backend_migration:
+    <<: *backend
+    # Runs migrations and sets up the DB in dev
+    command: bash -c 'MYSQL_PWD=password wait-until "mysql core -u upwardlicore -e \"select 1\"" && ./manage.py migrate && ./manage.py dev_seed_users'
+    ports: []
+  web: &web_base
+    build:
+      context: ./clients
+      target: base
+    command: /usr/local/bin/npm run dev --workspace=web
+    volumes:
+      - ./clients/package.json:/app/package.json:delegated
+
+      - ./clients/web/package.json:/app/web/package.json:delegated
+
+      - ./clients/v1-schema.yaml:/app/v1-schema.yaml:delegated
+      - ./clients/shared/api.ts:/app/shared/api.ts:delegated
+      - ./clients/shared/events.ts:/app/shared/events.ts:delegated
+      - ./clients/shared/utils.ts:/app/shared/utils.ts:delegated
+
+      - ./clients/web/README.md:/app/web/README.md:delegated
+      - ./clients/web/public:/app/web/public:delegated
+      - ./clients/web/pages:/app/web/pages:delegated
+      - ./clients/web/components:/app/web/components:delegated
+      - ./clients/web/auth:/app/web/auth:delegated
+      - ./clients/web/views:/app/web/views:delegated
+      - ./clients/web/utils:/app/web/utils:delegated
+      - ./clients/web/styles:/app/web/styles:delegated
+      - ./clients/web/types:/app/web/types:delegated
+      - ./clients/web/next-env.d.ts:/app/web/next-env.d.ts:delegated
+      - ./clients/web/tsconfig.json:/app/web/tsconfig.json:delegated
+      - ./clients/web/next.config.js:/app/web/next.config.js:delegated
+      - ./clients/web/theme.ts:/app/web/theme.ts:delegated
+    ports:
+      - 3000:3000
+      - 9229:9229
+    environment:
+      - NEXT_PUBLIC_UPWARDLI_RUNTIME_CONTEXT=web
+      - NEXT_PUBLIC_UPWARDLI_WEB_CONTEXT=full
+      - NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-MK5QJXFZ93
+      - NEXT_PUBLIC_UPWARDLI_API_HOST=http://backend:8080
+  web_embedded:
+    <<: *web_base
+    ports:
+      - 3001:3000
+    environment:
+      - NEXT_PUBLIC_UPWARDLI_RUNTIME_CONTEXT=web
+      - NEXT_PUBLIC_UPWARDLI_WEB_CONTEXT=embedded
+      - NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-MK5QJXFZ93
+      - NEXT_PUBLIC_UPWARDLI_API_HOST=http://backend:8080
+  native:
+    build:
+      context: ./clients
+      target: native_base
+    ports:
+      - 19000:19000
+      - 19001:19001
+      - 19002:19002
+    command: /usr/local/bin/npm run dev --workspace=native
+    volumes:
+      - ./clients/package.json:/app/package.json:delegated
+
+      - ./clients/native/package.json:/app/native/package.json:delegated
+
+      - ./clients/v1-schema.yaml:/app/v1-schema.yaml:delegated
+      - ./clients/shared/api.ts:/app/shared/api.ts:delegated
+      - ./clients/shared/events.ts:/app/shared/events.ts:delegated
+      - ./clients/shared/utils.ts:/app/shared/utils.ts:delegated
+
+      - ./clients/native/App.tsx:/app/native/App.tsx:delegated
+      - ./clients/native/app.json:/app/native/app.json:delegated
+      - ./clients/native/babel.config.js:/app/native/babel.config.js:delegated
+      - ./clients/native/hooks:/app/native/hooks:delegated
+      - ./clients/native/components:/app/native/components:delegated
+      - ./clients/native/navigation:/app/native/navigation:delegated
+      - ./clients/native/assets:/app/native/assets:delegated
+      - ./clients/native/constants:/app/native/constants:delegated
+      - ./clients/native/screens:/app/native/screens:delegated
+      - ./clients/native/types.tsx:/app/native/types.tsx:delegated
+      - ./clients/native/tsconfig.json:/app/native/tsconfig.json:delegated
+      - ./clients/native/global.d.ts:/app/native/global.d.ts:delegated
+
+    environment:
+      - EXPO_TOKEN
+      # Needed to let Expo find your container
+      - REACT_NATIVE_PACKAGER_HOSTNAME
+      - NEXT_PUBLIC_UPWARDLI_RUNTIME_CONTEXT=native
+      - NEXT_PUBLIC_UPWARDLI_API_HOST=http://${REACT_NATIVE_PACKAGER_HOSTNAME}:8001
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: core
+      MYSQL_USER: upwardlicore
+      MYSQL_PASSWORD: password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10

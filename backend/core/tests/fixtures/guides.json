@@ -1,0 +1,652 @@
+[
+  {
+    "model": "guides.guide",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "title": "Upwardli Basics",
+      "slug": "upwardli-basics",
+      "reading_time": "5 min",
+      "image": "images/example_7Auk8aC.jpg"
+    }
+  },
+  {
+    "model": "guides.guide",
+    "pk": 2,
+    "fields": {
+      "sort_index": 2,
+      "title": "Personalize your experience",
+      "slug": "personalize-your-experience",
+      "reading_time": "5 min",
+      "image": "images/example_JOOZkCy.jpg"
+    }
+  },
+  {
+    "model": "guides.guide",
+    "pk": 3,
+    "fields": {
+      "sort_index": 3,
+      "title": "Understanding the US Financial System",
+      "slug": "understanding-the-us-financial-system",
+      "reading_time": "5 min",
+      "image": "images/example_xmruQzW.jpg"
+    }
+  },
+  {
+    "model": "guides.guide",
+    "pk": 4,
+    "fields": {
+      "sort_index": 4,
+      "title": "Sending Money Internationally",
+      "slug": "sending-money-internationally",
+      "reading_time": "5 min",
+      "image": "images/example_z7yVBsv.jpg"
+    }
+  },
+  {
+    "model": "guides.guide",
+    "pk": 5,
+    "fields": {
+      "sort_index": 5,
+      "title": "Bank Accounts 101",
+      "slug": "bank-accounts-101",
+      "reading_time": "5 min",
+      "image": "images/example_ECeqoA4.jpg"
+    }
+  },
+  {
+    "model": "guides.guide",
+    "pk": 6,
+    "fields": {
+      "sort_index": 6,
+      "title": "Credit Cards 101",
+      "slug": "credit-cards-101",
+      "reading_time": "5 min",
+      "image": "images/example_VsWY4Up.jpg"
+    }
+  },
+  {
+    "model": "guides.guidemodule",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "guide": 1,
+      "title": "Meet Upwardli",
+      "slug": "meet-upwardli"
+    }
+  },
+  {
+    "model": "guides.guidemodule",
+    "pk": 2,
+    "fields": {
+      "sort_index": 2,
+      "guide": 1,
+      "title": "How Upwardli works",
+      "slug": "how-upwardli-works"
+    }
+  },
+  {
+    "model": "guides.guidemodule",
+    "pk": 3,
+    "fields": {
+      "sort_index": 3,
+      "guide": 1,
+      "title": "Personalize your experience",
+      "slug": "personalize-your-experience"
+    }
+  },
+  {
+    "model": "guides.guidemodule",
+    "pk": 4,
+    "fields": {
+      "sort_index": 4,
+      "guide": 1,
+      "title": "Get started",
+      "slug": "get-started"
+    }
+  },
+  {
+    "model": "guides.guidemodule",
+    "pk": 5,
+    "fields": {
+      "sort_index": 6,
+      "guide": 6,
+      "title": "Personalize Recommendations",
+      "slug": "new-module"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "guide_module": 1,
+      "content_type": "static_page",
+      "button_text": "How Upwardli works"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 2,
+    "fields": {
+      "sort_index": 1,
+      "guide_module": 2,
+      "content_type": "static_page",
+      "button_text": "Get rewarded"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 3,
+    "fields": {
+      "sort_index": 2,
+      "guide_module": 2,
+      "content_type": "static_page",
+      "button_text": "Take a quiz to earn your first reward"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 4,
+    "fields": {
+      "sort_index": 3,
+      "guide_module": 2,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 5,
+    "fields": {
+      "sort_index": 4,
+      "guide_module": 2,
+      "content_type": "static_page",
+      "button_text": "Learn about Guides"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 6,
+    "fields": {
+      "sort_index": 5,
+      "guide_module": 2,
+      "content_type": "static_page",
+      "button_text": "Personalize your Guides"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 7,
+    "fields": {
+      "sort_index": 6,
+      "guide_module": 2,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 8,
+    "fields": {
+      "sort_index": 1,
+      "guide_module": 3,
+      "content_type": "static_page",
+      "button_text": "So, tell us about you!"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 9,
+    "fields": {
+      "sort_index": 2,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 10,
+    "fields": {
+      "sort_index": 3,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 11,
+    "fields": {
+      "sort_index": 4,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 12,
+    "fields": {
+      "sort_index": 5,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 13,
+    "fields": {
+      "sort_index": 6,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 14,
+    "fields": {
+      "sort_index": 7,
+      "guide_module": 3,
+      "content_type": "simple_choice_form",
+      "button_text": "next"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 15,
+    "fields": {
+      "sort_index": 8,
+      "guide_module": 3,
+      "content_type": "static_page",
+      "button_text": "Explore Your Guides"
+    }
+  },
+  {
+    "model": "guides.guidestep",
+    "pk": 16,
+    "fields": {
+      "sort_index": 1,
+      "guide_module": 5,
+      "content_type": "multiple_choice_form",
+      "button_text": "Next"
+    }
+  },
+  {
+    "model": "guides.guidestaticpage",
+    "pk": 1,
+    "fields": {
+      "guide_step": 1,
+      "title": "Welcome to Upwardli!",
+      "text": "Upwardli is your personal guide to the U.S. financial system.                  We build you step-by-step guides to reach your financial goals fast –                  everything from building credit to finding the best services -                  and reward you for making progress along the way.                  This Guide shows you how Upwardli works and how we help you win your financial life.                  Let’s get your journey started!",
+      "text_rendered": "<p>Upwardli is your personal guide to the U.S. financial system.                  We build you step-by-step guides to reach your financial goals fast –                  everything from building credit to finding the best services -                  and reward you for making progress along the way.                  This Guide shows you how Upwardli works and how we help you win your financial life.                  Let’s get your journey started!</p>",
+      "image": "pages/example_QAn6dpP.jpg",
+      "video_url": "https://link_to_vedeo.webm"
+    }
+  },
+  {
+    "model": "guides.guidestaticpage",
+    "pk": 2,
+    "fields": {
+      "guide_step": 2,
+      "title": "Knowledge is power",
+      "text": "Upwardli helps you navigate financial life with confidence.",
+      "text_rendered": "<p>Upwardli helps you navigate financial life with confidence.</p>",
+      "image": "pages/example_udIKJnZ.jpg",
+      "video_url": null
+    }
+  },
+  {
+    "model": "guides.guidestaticpage",
+    "pk": 3,
+    "fields": {
+      "guide_step": 3,
+      "title": "Knowledge is power",
+      "text": "Upwardli helps you navigate financial life with confidence.",
+      "text_rendered": "<p>Upwardli helps you navigate financial life with confidence.</p>",
+      "image": "pages/example_ofAAkLt.jpg",
+      "video_url": null
+    }
+  },
+  {
+    "model": "guides.guidestaticpage",
+    "pk": 4,
+    "fields": {
+      "guide_step": 5,
+      "title": "Show a celebration or money in a bank",
+      "text": "Congratulations on earning your first [amount] reward!                   Rewards can be managed in the ‘For You’ tab where you can                   see what you have earned, how to redeem rewards and how to earn even more.                   Now, let’s learn how Upwardli builds personalized Guides to help you win the financial system.",
+      "text_rendered": "<p>Congratulations on earning your first [amount] reward!                   Rewards can be managed in the ‘For You’ tab where you can                   see what you have earned, how to redeem rewards and how to earn even more.                   Now, let’s learn how Upwardli builds personalized Guides to help you win the financial system.</p>",
+      "image": "pages/example_L4ZArtU.jpg",
+      "video_url": null
+    }
+  },
+  {
+    "model": "guides.guidestaticpage",
+    "pk": 5,
+    "fields": {
+      "guide_step": 6,
+      "title": "SIntroducing Upwardli’s personalized financial Guides.",
+      "text": "We build step-by-step Guides to mastering the financial system based on your             interests and profile. Each guide teaches you what you need to master the topic and             give you customized recommendations to find the best deal for you.             To start, you’ll have access to our standard Guides and can add more:",
+      "text_rendered": "<p>We build step-by-step Guides to mastering the financial system based on your             interests and profile. Each guide teaches you what you need to master the topic and             give you customized recommendations to find the best deal for you.             To start, you’ll have access to our standard Guides and can add more:</p>",
+      "image": "pages/example_1HXGiZi.jpg",
+      "video_url": null
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "guide_static_page": 3,
+      "text": "The 'For you' section shows you the next steps in your financial journey and the rewards you’ve earned",
+      "image": "example_YbNEWt0.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 2,
+    "fields": {
+      "sort_index": 2,
+      "guide_static_page": 3,
+      "text": "'Guides' gives you personalized step-by-step guides to master key financial topics and get tailored recommendations",
+      "image": "example_1KTLJas.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 3,
+    "fields": {
+      "sort_index": 3,
+      "guide_static_page": 3,
+      "text": "'Credit' is your home base to monitor and improve your credit score with personalized credit boosting plans",
+      "image": "example_ZwRi4nE.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 4,
+    "fields": {
+      "sort_index": 4,
+      "guide_static_page": 3,
+      "text": "'Offers' shows you services that match your interests",
+      "image": "example_q6MpGs3.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 5,
+    "fields": {
+      "sort_index": 5,
+      "guide_static_page": 3,
+      "text": "Profile’ is where your personal details live and where you can manage your preferences",
+      "image": "example_t7hDZWO.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 6,
+    "fields": {
+      "sort_index": 1,
+      "guide_static_page": 5,
+      "text": "US Financial System Basics",
+      "image": "example_Zc9QD1z.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 7,
+    "fields": {
+      "sort_index": 2,
+      "guide_static_page": 5,
+      "text": "The 'Getting Started' Checklist",
+      "image": "example_y13EYu3.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 8,
+    "fields": {
+      "sort_index": 3,
+      "guide_static_page": 5,
+      "text": "Getting a Bank Account",
+      "image": "example_69U1dhI.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 9,
+    "fields": {
+      "sort_index": 4,
+      "guide_static_page": 5,
+      "text": "Building Credit Fast",
+      "image": "example_jQCGlNM.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 10,
+    "fields": {
+      "sort_index": 5,
+      "guide_static_page": 5,
+      "text": "Understanding Credit Cards",
+      "image": "example_ByGq8Y9.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 11,
+    "fields": {
+      "sort_index": 6,
+      "guide_static_page": 5,
+      "text": "Sending Money Internationally",
+      "image": "example_2S55jvE.jpg"
+    }
+  },
+  {
+    "model": "guides.guidestaticpagelistwithicons",
+    "pk": 12,
+    "fields": {
+      "sort_index": 7,
+      "guide_static_page": 5,
+      "text": "Start Saving Now",
+      "image": "example_tcJdD01.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleform",
+    "pk": 1,
+    "fields": {
+      "guide_step": 4,
+      "title": "How confident are you in your knowledge of the US financial system?"
+    }
+  },
+  {
+    "model": "guides.guidesimpleform",
+    "pk": 2,
+    "fields": {
+      "guide_step": 7,
+      "title": "How would you prefer that we display our Guides?"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "guide_simple_form": 1,
+      "text": "a. I’m an expert",
+      "image": "example_Sys8Xwm.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 2,
+    "fields": {
+      "sort_index": 2,
+      "guide_simple_form": 1,
+      "text": "b. I was raised here, so I know a little, but wish I knew more.",
+      "image": "example_efchJRp.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 3,
+    "fields": {
+      "sort_index": 3,
+      "guide_simple_form": 1,
+      "text": "c. I’m new to the U.S. - I am just learning.",
+      "image": "example_kSRegDv.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 4,
+    "fields": {
+      "sort_index": 4,
+      "guide_simple_form": 1,
+      "text": "d. Honestly? Not confident at all - help!",
+      "image": "example_POvakm4.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 5,
+    "fields": {
+      "sort_index": 1,
+      "guide_simple_form": 2,
+      "text": "a. Videos with captions",
+      "image": "example_senJhgh.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 6,
+    "fields": {
+      "sort_index": 2,
+      "guide_simple_form": 2,
+      "text": "b. Text only is fine (with audio to make sure it is all accessible)",
+      "image": "example_30PTnCW.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 7,
+    "fields": {
+      "sort_index": 3,
+      "guide_simple_form": 2,
+      "text": "c. Give me both!",
+      "image": "example_gS2qkgA.jpg"
+    }
+  },
+  {
+    "model": "guides.guidesimpleformchoices",
+    "pk": 8,
+    "fields": {
+      "sort_index": 4,
+      "guide_simple_form": 2,
+      "text": "d. Doesn’t matter to me so long as I can earn rewards!",
+      "image": "example_hTxIxPl.jpg"
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceform",
+    "pk": 1,
+    "fields": {
+      "guide_step": 16,
+      "title": "Which of these financial products do you currently use?"
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 1,
+    "fields": {
+      "sort_index": 1,
+      "guide_multi_choices_form": 1,
+      "text": "Credit building / monitoring",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 2,
+    "fields": {
+      "sort_index": 2,
+      "guide_multi_choices_form": 1,
+      "text": "Credit card",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 3,
+    "fields": {
+      "sort_index": 3,
+      "guide_multi_choices_form": 1,
+      "text": "Bank Account",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 4,
+    "fields": {
+      "sort_index": 4,
+      "guide_multi_choices_form": 1,
+      "text": "Refinance / Personal loan",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 5,
+    "fields": {
+      "sort_index": 5,
+      "guide_multi_choices_form": 1,
+      "text": "Student Loan",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 6,
+    "fields": {
+      "sort_index": 6,
+      "guide_multi_choices_form": 1,
+      "text": "International money transfer",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 7,
+    "fields": {
+      "sort_index": 7,
+      "guide_multi_choices_form": 1,
+      "text": "Saving / Investment",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 8,
+    "fields": {
+      "sort_index": 8,
+      "guide_multi_choices_form": 1,
+      "text": "Car loan",
+      "image": ""
+    }
+  },
+  {
+    "model": "guides.guidemultichoiceformchoices",
+    "pk": 9,
+    "fields": {
+      "sort_index": 9,
+      "guide_multi_choices_form": 1,
+      "text": "Mortgage",
+      "image": ""
+    }
+  }
+]

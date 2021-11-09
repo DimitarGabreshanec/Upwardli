@@ -1,0 +1,61 @@
+[
+  {
+    "model": "offers.offercategory",
+    "pk": 1,
+    "fields": {
+      "name": "Offer category 1",
+      "slug": "offer-category-1"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 1,
+    "fields": {
+      "recommended": true,
+      "ssn_required": false,
+      "pros": [
+        {
+          "text": "A no-fee cash back card for those with little to no prior credit history",
+          "icon": "like"
+        },
+        {
+          "text": "No SSN or credit history required",
+          "icon": "green"
+        },
+        {
+          "text": "Automated limit increases with repayment history",
+          "icon": "green"
+        },
+        {
+          "text": "No intro APR period or sign-up bonus",
+          "icon": "yellow"
+        }
+      ],
+      "pros_short": [
+        {
+          "text": "Open"
+        },
+        {
+          "text": "Edit"
+        }
+      ],
+      "cons": [
+        {
+          "text": "Open"
+        },
+        {
+          "text": "Edit"
+        }
+      ],
+      "review_count": 0,
+      "review_stars": 0.0,
+      "short_title": "Petal",
+      "long_title": "Built for Newcomers to Credit",
+      "cta_text": "Get Pre-Approved",
+      "cta_action": "https://www.google.com/search?q=cta+action",
+      "cta_url": null,
+      "category": 1,
+      "sort_index": 1
+    }
+  }
+]

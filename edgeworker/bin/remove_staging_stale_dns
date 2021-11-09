@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+"""
+Remove DNS records for staging environments greater than 30 days old.
+"""
+import re
+import os
+from datetime import datetime
+from datetime import timedelta
+import requests
+
+ZONE_ID = "48f041cd6beecf6e4905bc793671813e"
+API_ROOT = "https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records".format(
+    zone_id=ZONE_ID
+)
+HEADERS = {
+    "Authorization": "Bearer {token}".format(token=os.environ["CF_API_TOKEN"]),
+}
+STRPTIME = "%Y-%m-%dT%H:%M:%S.%f%z"
+
+dns_records = requests.get(API_ROOT, headers=HEADERS).json()["result"]
+
+name_created_ids = [
+    (dns_record["name"], dns_record["created_on"], dns_record["id"])
+    for dns_record in dns_records
+]
+
+for name, created_on, id in name_created_ids:
+    # special case for embedded-staging.upwardli.com
+    if name == "embedded-staging.upwardli.com":
+        continue
+    if re.match(r".*\-staging\.upwardli\.com", name):
+        created_on_dt = datetime.strptime(created_on, STRPTIME)
+        created_on_dt = created_on_dt.replace(tzinfo=None)
+
+        created_on_age = datetime.now() - created_on_dt
+
+        record_url = "{api_root}/{id}".format(api_root=API_ROOT, id=id)
+
+        if created_on_age > timedelta(days=30):
+            print("Removing stale name {name}".format(name=name))
+            requests.delete(record_url, headers=HEADERS)

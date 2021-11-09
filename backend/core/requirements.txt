@@ -1,0 +1,34 @@
+apig-wsgi==2.11.0
+Django==3.2
+factory-boy
+mysqlclient
+boto3==1.18.53
+# TODO: Bump to any release post-3.12.4
+# djangorestframework
+https://github.com/encode/django-rest-framework/archive/refs/heads/master.zip
+# markdown for browsable API
+markdown
+# django-filter for automatic restframework filtering
+django-filter
+django-extensions
+django-staticfiles-noimport==0.9
+# django authentication and registration support 
+# TODO: Once https://github.com/iMerica/dj-rest-auth/pull/283 is merged
+# go back to pypi distribution
+# dj-rest-auth[with_social]
+dj-rest-auth[with_social] @ https://github.com/philipkimmey/dj-rest-auth/archive/refs/heads/login-schema-fixes.zip
+# JWT-based authentication token support
+djangorestframework-simplejwt
+# Used to generate schema into YAML-based OpenAPI format
+pyyaml
+uritemplate
+Pillow==8.3.1
+drf-yasg==1.20.0
+# A simple custom field for Django that can safely render Markdown and store it in the database.
+django-markdownfield==0.10.0
+hashids
+phonenumbers==8.12.31
+geocoder==1.38.1
+jsonschema==3.2.0
+django-jsoneditor==0.1.6
+pyjwt==2.1.0

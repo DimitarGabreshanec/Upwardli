@@ -1,0 +1,15 @@
+{
+	auto_https off
+}
+
+:80 {
+	bind 0.0.0.0
+	reverse_proxy /core/* backend:8080
+	reverse_proxy web:3000
+}
+
+:81 {
+	bind 0.0.0.0
+	reverse_proxy /core/* backend:8080
+	reverse_proxy web_embedded:3000
+}

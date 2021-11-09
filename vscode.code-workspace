@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"name": "root",
+			"path": "."
+		},
+		{
+			"name": "backend",
+			"path": "backend/"
+		},
+		{
+			"name": "clients",
+			"path": "clients/"
+		},
+		{
+			"name": "inf",
+			"path": "inf/"
+		}
+	],
+	"settings": {
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true
+		},
+		"python.formatting.provider": "black",
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true,
+		"files.eol": "\n",
+	},
+	"recommendations": [
+		"ms-vscode-remote.remote-containers",
+		"4ops.terraform"
+	]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@upwardli/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--inspect=0.0.0.0:9229' next dev",
+    "build": "next build",
+    "prod": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "1.6.7",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "embla-carousel": "^4.5.3",
+    "embla-carousel-wheel-gestures": "^1.1.1",
+    "framer-motion": "^4",
+    "next": "10.2.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-plugin-svgr": "^1.0.0",
+    "next-transpile-modules": "~7.3.0",
+    "node-fetch": "^2.6.1",
+    "react-icons": "~4.2.0",
+    "react-store-badges": "^1.5.1",
+    "sass": "^1.38.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
+    "@types/node-fetch": "^2.5.11",
+    "@upwardli/api": "*",
+    "@upwardli/shared": "*"
+  }
+}

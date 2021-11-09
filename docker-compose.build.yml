@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  web:
+    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    build:
+      context: ./clients
+      target: web_prod_full
+      args:
+        - NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-MK5QJXFZ93
+        - NEXT_PUBLIC_UPWARDLI_API_HOST
+  web_embedded:
+    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    build:
+      context: ./clients
+      target: web_prod_embedded
+      args:
+        - NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-MK5QJXFZ93
+        - NEXT_PUBLIC_UPWARDLI_API_HOST
+  edgeworker:
+    build:
+      context: ./edgeworker
+      target: cf_upload
+      args:
+        - WEB_SOURCE_IMAGE=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+  backend:
+    build:
+      context: ./backend/core
+      target: base

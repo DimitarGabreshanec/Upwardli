@@ -1,0 +1,73 @@
+compatibility_date = "2021-09-17"
+type = "webpack"
+account_id = "b9edee195d07544a873030cc7acf2a46"
+webpack_config = "webpack.config.js"
+name = "edgeworker"
+zone_id = "48f041cd6beecf6e4905bc793671813e"
+routes = ["www.upwardli.com/*", "embedded.upwardli.com/*"]
+
+[dev]
+ip = "0.0.0.0"
+
+# Standard dev, running on :8787
+[env.dev]
+workers_dev = true
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "21f0891ddb92400880d5d243e8b9b341", preview_id = "21f0891ddb92400880d5d243e8b9b341" },
+]
+[env.dev.vars]
+ENVIRONMENT = "dev"
+WEB_CONTEXT = "full"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"
+
+# Embedded dev, running on :8788
+[env.dev_embedded]
+workers_dev = true
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "ac9b21ee703147459d4643ab0a38c8f3", preview_id = "ac9b21ee703147459d4643ab0a38c8f3" }
+]
+[env.dev_embedded.vars]
+ENVIRONMENT = "dev_embedded"
+WEB_CONTEXT = "embedded"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"
+
+
+[env.staging]
+routes = ["staging.upwardli.com/*", "*-staging.upwardli.com/*"]
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "21f0891ddb92400880d5d243e8b9b341", preview_id = "21f0891ddb92400880d5d243e8b9b341" },
+]
+[env.staging.vars]
+ENVIRONMENT = "staging"
+WEB_CONTEXT = "full"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"
+
+[env.staging_embedded]
+routes = ["embedded-staging.upwardli.com/*", "*-embedded-staging.upwardli.com/*"]
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "ac9b21ee703147459d4643ab0a38c8f3", preview_id = "ac9b21ee703147459d4643ab0a38c8f3" }
+]
+[env.staging_embedded.vars]
+ENVIRONMENT = "staging_embedded"
+WEB_CONTEXT = "embedded"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"
+
+[env.prod]
+routes = ["www.upwardli.com/*"]
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "d192cdcc6a5b4a419f986fcc51f496ef" },
+]
+[env.prod.vars]
+ENVIRONMENT = "prod"
+WEB_CONTEXT = "full"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"
+
+[env.prod_embedded]
+routes = ["embedded-www.upwardli.com/*"]
+kv_namespaces = [
+  { binding = "NEXTJS_SITE", id = "796dda6ecf4f40cab53a4a3756776500" }
+]
+[env.prod_embedded.vars]
+ENVIRONMENT = "prod_embedded"
+WEB_CONTEXT = "embedded"
+UPSTREAM_CORE_HOSTNAME = "h2qyn4sxni.execute-api.us-east-2.amazonaws.com"

@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  edgeworker: &edgeworker
+    command: wrangler dev --env=dev
+    ports:
+      - 8787:8787
+    build:
+      context: ./edgeworker
+      target: dev
+    environment:
+      - CF_API_TOKEN=${CLOUDFLARE_TOKEN}
+      - GITHUB_REF
+    volumes:
+      - ./edgeworker/Dockerfile:/app/Dockerfile:delegated
+      - ./edgeworker/bin:/app/bin:delegated
+      - ./edgeworker/src:/app/src:delegated
+      - ./edgeworker/test:/app/test:delegated
+      - ./edgeworker/wrangler.toml:/app/wrangler.toml:delegated
+      - ./edgeworker/package.json:/app/package.json:delegated
+      - ./edgeworker/package-lock.json:/app/package-lock.json:delegated
+  edgeworker_embedded:
+    <<: *edgeworker
+    command: wrangler dev --env=dev_embedded
+    ports:
+      - 8788:8787

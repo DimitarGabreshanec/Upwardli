@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""
+Adds DNS records for staging environments:
+
+- {branch_name}-staging.upwardli.com
+- {branch_name}-embedded-staging.upwardli.com
+"""
+import os
+import requests
+
+ZONE_ID = "48f041cd6beecf6e4905bc793671813e"
+API_ROOT = "https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records".format(
+    zone_id=ZONE_ID
+)
+HEADERS = {
+    "Authorization": "Bearer {token}".format(token=os.environ["CF_API_TOKEN"]),
+}
+branch_name = os.environ["GITHUB_HEAD_REF"]
+staging_url = "{branch_name}-staging.upwardli.com".format(branch_name=branch_name)
+embedded_staging_url = "{branch_name}-embedded-staging.upwardli.com".format(
+    branch_name=branch_name
+)
+dns_names = [staging_url, embedded_staging_url]
+
+dns_records = requests.get(API_ROOT, headers=HEADERS).json()["result"]
+existing_names = [dns_record["name"] for dns_record in dns_records]
+
+for staging_name in dns_names:
+    if staging_name not in existing_names:
+        resp = requests.post(
+            API_ROOT,
+            headers=HEADERS,
+            json={
+                "type": "A",
+                "name": staging_name,
+                "content": "192.0.2.1",
+                "ttl": 60 * 5,
+                "proxied": True,
+            },
+        )
+
+print("::set-output name=staging_url::https://{url}".format(url=staging_url))
+print(
+    "::set-output name=embedded_staging_url::https://{url}".format(
+        url=embedded_staging_url
+    )
+)

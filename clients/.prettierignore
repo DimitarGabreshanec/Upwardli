@@ -1,0 +1,5 @@
+node_modules
+# Ignore generated code in api
+api
+# Ignore .yaml files for now
+*.yaml
